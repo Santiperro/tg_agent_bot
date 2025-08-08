@@ -124,30 +124,29 @@ User: "News about quantum computing"
 - **Length Control**: `max_tokens` + "If it's too long, provide a brief summary."
 - **Debug Output**: For development, include retrieved snippets and similarity scores.
 
-## 5. File Architecture
+## 5. File Architecture (it's changing)
 ```
 rag_agent_bot/
-├── bot.py                  # Entry point: Aiogram initialization, bot startup
+├── main.py                 # Entry point: Aiogram initialization, bot startup
 ├── config.py               # Settings (API keys, RAG parameters, DB)
 ├── handlers/               # Telegram event handlers
 │   ├── __init__.py
-│   ├── message_handlers.py # Handling text and forwarded messages
-│   └── callback_handlers.py# Managing reminders and memory via inline buttons
-├── middlewares/            # Custom middlewares for Aiogram
+│   ├── message_handlers.py  # Handling text and forwarded messages
+│   └── callback_handlers.py # Managing reminders and memory via inline buttons
+├── middlewares/             # Custom middlewares for Aiogram
 │   ├── __init__.py
 │   ├── throttling.py       # Spam protection (rate limiting)
 │   └── context.py          # Saving user context for hybrid memory
-├── memory/
-│   ├── auto_memory.py      # Working with the vector store (Chroma)
-│   └── user_memory.py      # CRUD for explicit memory
-├── tasks/
-│   └── reminders.py        # APScheduler logic
-├── search/
-│   └── web_search.py       # SerpAPI wrapper / parsers
-├── rag_pipeline/
-│   └── rag.py              # Combining Retrieval and Generation
+├── llm/                    # LLM API
+├── rag/                    # RAG pipeline
+├── tools/                  # LLM function calling tools
+│   ├── memory/             # Working with the vector store (Chroma)
+│   ├── web_search/         # Web search tool
+│   └── tasks/              # APScheduler logic   
 ├── db/
-│   └── models.py           # SQLAlchemy models or Redis client
+│   └── chroma/             # Chroma DB
+│   └── sqlite/             # SQLite DB
+│   └── redis/              # Redis DB
 ├── utils/
 │   ├── nlp_utils.py        # Intent classifier, embeddings
 │   └── prompt_templates.py # RAG prompt templates
