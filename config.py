@@ -1,4 +1,8 @@
 import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 API_CONFIG = {
@@ -31,7 +35,7 @@ class LLMConfig:
 
 
 class Settings:
-    tg_api_config = os.getenv("TG_BOT_TOKEN")
+    tg_api_token = os.getenv("TG_BOT_TOKEN")
     llm_api_config = LLMConfig()
     
     

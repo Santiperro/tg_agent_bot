@@ -1,7 +1,7 @@
 from aiogram.types import (ReplyKeyboardMarkup, KeyboardButton, 
                            InlineKeyboardButton, InlineKeyboardMarkup)
 
-from texts import *
+from bot.texts import *
 
 
 def get_confirmation_keyboard() -> InlineKeyboardMarkup:
@@ -13,9 +13,12 @@ def get_confirmation_keyboard() -> InlineKeyboardMarkup:
     )
 
 
-main_keyboard = ReplyKeyboardMarkup(keyboard=[
-        [KeyboardButton(text=INFO_BUTTON)],
-        [KeyboardButton(text=MANAGE_MEMORY_BUTTON),
-        KeyboardButton(text=SHOW_STATISTICS_BUTTON)]],
-    resize_keyboard=True,
-    input_field_placeholder="")
+main_inline_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text=INFO_BUTTON.strip(), callback_data="menu:info")],
+        [
+            InlineKeyboardButton(text=MANAGE_MEMORY_BUTTON.strip(), callback_data="menu:manage_memory"),
+            InlineKeyboardButton(text=SHOW_STATISTICS_BUTTON.strip(), callback_data="menu:stats"),
+        ],
+    ]
+)
