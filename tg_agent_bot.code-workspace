@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../moderator-tg-bot"
+		},
+		{
+			"path": "../shizoid-tg-bot"
+		}
+	],
+	"settings": {}
+}
