@@ -9,6 +9,11 @@
    - confirmation of the use of tools;
    - managing explicit memory (e.g., cleaning the current context, deleting or editing a saved record);
    - other bot settings.
+3. Inline navigation UX:
+   - Single main screen with inline keyboard, all secondary screens are shown via message editing (no chat spam).
+   - Callback data format: `menu:<screen>[:key=value]` (e.g., `menu:stats:page=2`).
+   - Each secondary screen includes a back button to `menu:main`.
+   - Destructive actions (e.g., clear context) require confirmation via two-step dialog (`confirm`/`cancel`).
 
 ### LLM Layer
 - **API**: OpenAI and custom API. Possible models: gpt-4.1, gpt-4.1-mini, o4-mini, o3-mini, deepseek-v3, deepseek-r1.
